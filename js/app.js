@@ -1,15 +1,19 @@
 let $ = document
 
 const inputBtn = $.getElementById('input-field')
-
 const listNote = $.getElementById('listed')
-
 const saveElem = $.getElementById('btn-save')
 const deleteElem = $.getElementById('btn-delete')
-
 const colorBox = $.querySelectorAll('.color-box')
 
 let mainColor
+
+listNote.addEventListener('click', function (event) {
+
+    if (event.target.tagName === 'P') {
+        event.target.parentElement.remove()
+    }
+})
 
 colorBox.forEach(function (colorBox) {
     colorBox.addEventListener('click', function () {
@@ -31,7 +35,6 @@ function generateNewDiv() {
     let newDiv = $.createElement('div')
     newDiv.classList = 'card shadow-sm rounded'
     newDiv.style.backgroundColor = mainColor
-    listNote.addEventListener('click', removeDiv)
 
     let newPara = $.createElement('p')
     newPara.classList = 'card-text p-3'
